@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="http://dimplejs.org/dist/dimple.v2.2.0.min.js"></script>
+    
+    <style>
+      h1 {
+        text-align: center;
+        color: black;
+      }
+    </style>
+    <div id="myButtons" style="text-align:center;">
+        <button id='btn'>
+            Probability To Make Profit
+        </button>
+        <button id='btn1'>
+            Median Return On Investment
+        </button>
+        <button id='btn2'>
+            Median IMDB Score
+        </button>
+    </div>
+    <div id="chartcontainer"></div>
+
+        <script type="text/javascript">
+      function draw(data) {
+        "use strict";
+        var margin = 75,
+          width = 700 - margin,
+          height = 400 - margin;
+
+        d3.select("#chartcontainer")
+          .append('h1')
+          .text('Best Time To Be In The Film Industry');
+          
+        var svg = d3.select("#chartcontainer")
+          .append('svg')
+            .attr("width", width + margin)
+            .attr("height", height + margin);
+        
+        var myChart = new dimple.chart(svg, data);
+        var x = myChart.addCategoryAxis("x", ['Year']);
+        x.title = 'Year Movie was Releasesd';
+        var y = myChart.addMeasureAxis("y", "Probability to Make Profit");
+        var mySeries = myChart.addSeries(null, dimple.plot.line);
+
+        myChart.draw();
+
+
+          d3.select("#btn").on("click", function() {
+                d3.select("#chartcontainer").selectAll("*").remove();
+
+                "use strict";
+        var margin = 75,
+          width = 700 - margin,
+          height = 400 - margin;
+
+        d3.select("#chartcontainer")
+          .append('h1')
+          .text('Best Time To Be In The Film Industry');
+          
+        var svg = d3.select("#chartcontainer")
+          .append('svg')
+            .attr("width", width + margin)
+            .attr("height", height + margin);
+        
+        var myChart = new dimple.chart(svg, data);
+        var x = myChart.addCategoryAxis("x", ['Year']);
+        x.title = 'Year Movie was Releasesd';
+        var y = myChart.addMeasureAxis("y", "Probability to Make Profit");
+        var mySeries = myChart.addSeries(null, dimple.plot.line);
+
+        myChart.draw(1000);
+
+
+                });
+                d3.select("#btn1").on("click", function() {
+                d3.select("#chartcontainer").selectAll("*").remove();
+
+"use strict";
+        var margin = 75,
+          width = 700 - margin,
+          height = 400 - margin;
+
+        d3.select("#chartcontainer")
+          .append('h1')
+          .text('Best Time To Be In The Film Industry');
+          
+        var svg = d3.select("#chartcontainer")
+          .append('svg')
+            .attr("width", width + margin)
+            .attr("height", height + margin);
+        
+        var myChart = new dimple.chart(svg, data);
+        var x = myChart.addCategoryAxis("x", ['Year']);
+        x.title = 'Year Movie was Releasesd';
+   var y = myChart.addMeasureAxis("y", "Median ROI");
+        var mySeries = myChart.addSeries(null, dimple.plot.line);
+
+        myChart.draw(1000);
+
+                });
+                d3.select("#btn2").on("click", function() {
+                d3.select("#chartcontainer").selectAll("*").remove();
+
+"use strict";
+        var margin = 75,
+          width = 700 - margin,
+          height = 400 - margin;
+
+        d3.select("#chartcontainer")
+          .append('h1')
+          .text('Best Time To Be In The Film Industry');
+          
+        var svg = d3.select("#chartcontainer")
+          .append('svg')
+            .attr("width", width + margin)
+            .attr("height", height + margin);
+        
+        var myChart = new dimple.chart(svg, data);
+        var x = myChart.addCategoryAxis("x", ['Year']);
+        x.title = 'Year Movie was Releasesd';
+   var y = myChart.addMeasureAxis("y", "Median IMDB Score");
+        var mySeries = myChart.addSeries(null, dimple.plot.line);
+
+        myChart.draw(1000);
+
+                });
+
+      };
+    </script>
+  </head>
+<body>
+  <script type="text/javascript">
+  d3.csv("movie_database_by_year.csv", draw);
+  </script>
+</body>
+</html>
