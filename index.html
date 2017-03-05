@@ -10,6 +10,11 @@
         text-align: center;
         color: black;
       }
+
+      h2 {
+        text-align: center;
+        color: black;
+      }
     </style>
     <div id="myButtons" style="text-align:center;">
         <button id='btn'>
@@ -19,7 +24,7 @@
             Median Return On Investment
         </button>
         <button id='btn2'>
-            Median IMDB Score
+            Mean IMDB Score
         </button>
     </div>
     <div id="chartcontainer"></div>
@@ -34,7 +39,24 @@
         d3.select("#chartcontainer")
           .append('h1')
           .text('Best Time To Be In The Film Industry');
+
+        d3.select("#chartcontainer")
+            .append("p")
+                .text("This project aims to show trends of the movie industry using data from 2606 movies that opened in theater between 1996 and 2016.")
+            .append("p")
+                .text("The data was collected from Internet Movie Database or IMDb. The data set contains data on movies produced and released in the USA only.")
+            .append("p")
+                .text("The independent variable is the year of movie's release. And there are three dependent variables: probability of making profit, median return on investment, and mean IMDB score.")
+            .append("p")
+                .text("Probability of making profit is the proportion of the movies that surpassed the breakeven point out of all the movies released in that year.")
+            .append("p")
+                .text("Return on Investment is calculated by dividing profit by the budget.")
+            .append("p")
+                .text("Median IMDB score is a measure for quality of a movie. Of course, there is no objective way to measure quality of movie. However, as scores from IMDb is usually credited as a reliable number, I thought it would provide a rough picture at the least.") 
+            .append("p")
+                .text("Push the buttons on top to explore!");
           
+
         var svg = d3.select("#chartcontainer")
           .append('svg')
             .attr("width", width + margin)
@@ -47,10 +69,12 @@
         var mySeries = myChart.addSeries(null, dimple.plot.line);
 
         myChart.draw();
+ 
 
 
           d3.select("#btn").on("click", function() {
                 d3.select("#chartcontainer").selectAll("*").remove();
+
 
                 "use strict";
         var margin = 75,
@@ -60,6 +84,7 @@
         d3.select("#chartcontainer")
           .append('h1')
           .text('Best Time To Be In The Film Industry');
+
           
         var svg = d3.select("#chartcontainer")
           .append('svg')
@@ -73,6 +98,14 @@
         var mySeries = myChart.addSeries(null, dimple.plot.line);
 
         myChart.draw(1000);
+
+        d3.select("#chartcontainer")
+            .append("p")
+                .text("In years 1999, 2004, 2007 and 2008, the probability of making money by producing a movie fell below 50% line.")
+            .append("p")
+                .text("This means that in those years, you are more likely to lose money than make money by producing a film.")
+            .append("p")
+                .text("In general, the movie industry shows some fluctuations. The best year was 2015 where 65% of the movies earned profit.")
 
 
                 });
@@ -100,6 +133,13 @@
         var mySeries = myChart.addSeries(null, dimple.plot.line);
 
         myChart.draw(1000);
+                d3.select("#chartcontainer")
+            .append("p")
+                .text("Return on Investment shows greater fluctuation. The years where the median return values were negetive were 1999, 2004, 2007, and 2008.")
+            .append("p")
+                .text("The worst year was 2008. In 2008, a mediocre movie was left with an 8% loss on the investment.")
+            .append("p")
+                .text("Nonetheless, recent trend shows that ROI is growing. In 2016, mediocre movie achieved a staggering 32% return on investment.")
 
                 });
                 d3.select("#btn2").on("click", function() {
@@ -122,10 +162,28 @@
         var myChart = new dimple.chart(svg, data);
         var x = myChart.addCategoryAxis("x", ['Year']);
         x.title = 'Year Movie was Releasesd';
-   var y = myChart.addMeasureAxis("y", "Median IMDB Score");
+   var y = myChart.addMeasureAxis("y", "Mean IMDB Score");
         var mySeries = myChart.addSeries(null, dimple.plot.line);
 
         myChart.draw(1000);
+
+        d3.select("#chartcontainer")
+            .append("p")
+                .text("Average IMDb scores show very little fluctuation.")
+            .append("p")
+                .text("In other words, the quality of movies varied little year by year.")
+            .append("p")
+                .text("Indeed, directors will not conspire in a dark room to make certain year a year of bad movies. That is highly unlikely.")
+            .append("p")
+                .text("This consistency implies that the reason for sudden drops in ROI and probability of making profit is not the quality of movies.")
+            .append("p")
+                .text("Instead, the surrounding economic environment seems to be a significant factor.")
+              .append("p")
+                .text("For example, 2007 and 2008 saw worst drops in probability of success and ROI. Global recession will be a good explanation for this.")
+              .append("p")
+                .text("Of course, other facttors also affect the probability of success in movie industry: rising Chinese market, advent of 3d movies, etc. I hope further investigation sheds light on the matter.")
+
+
 
                 });
 
